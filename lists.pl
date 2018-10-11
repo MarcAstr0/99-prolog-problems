@@ -15,4 +15,8 @@ last_but_one(X, [_|T]) :- last_but_one(X, T).
 %% ?- element_at(X,[a,b,c,d,e],3).
 %% X = c
 element_at(X, [X|_], 1).
-element_at(X, [_|T], N) :- N1 is N - 1, element_at(X, T, N1).
+element_at(X, [_|T], N) :- element_at(X, T, N1), N is N1 + 1.
+
+%% 1.04 (*) Find the number of elements of a list.
+number_of_elements([], 0).
+number_of_elements([_|T], N) :- number_of_elements(T, N1), N is N1 + 1.
